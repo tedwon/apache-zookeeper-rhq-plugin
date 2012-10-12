@@ -10,6 +10,67 @@
 
     <depends plugin="JMX" useClasses="true"/>
 
+    <!-- ZooKeeperService -->
+    <service name="ZooKeeperService"
+             description="ZooKeeperService"
+             discovery="org.rhq.plugins.jmx.MBeanResourceDiscoveryComponent"
+             class="org.rhq.plugins.jmx.MBeanResourceComponent">
 
+        <runs-inside>
+            <parent-resource-type name="JMX Server" plugin="JMX"/>
+        </runs-inside>
+
+        <plugin-configuration>
+            <c:simple-property name="objectName" default="org.apache.ZooKeeperService:name0=*"/>
+        </plugin-configuration>
+
+        <metric displayName="Name" property="Name"
+                description="Name"
+                dataType="trait" displayType="summary"/>
+
+        <metric displayName="QuorumAddress" property="QuorumAddress"
+                description="QuorumAddress"
+                dataType="trait" displayType="summary"/>
+
+        <metric displayName="State" property="State"
+                description="State"
+                dataType="trait" displayType="summary"/>
+
+        <metric displayName="TickTime" property="TickTime"
+                description="TickTime"
+                dataType="trait" displayType="summary"/>
+
+    </service>
+
+    <service name="ZooKeeperService.id2"
+             description="ZooKeeperService.id2"
+             discovery="org.rhq.plugins.jmx.MBeanResourceDiscoveryComponent"
+             class="org.rhq.plugins.jmx.MBeanResourceComponent">
+
+        <runs-inside>
+            <parent-resource-type name="JMX Server" plugin="JMX"/>
+        </runs-inside>
+
+        <plugin-configuration>
+            <c:simple-property name="objectName" default="org.apache.ZooKeeperService:name0=ReplicatedServer_id2,name1=replica.*"/>
+        </plugin-configuration>
+
+        <metric displayName="Name" property="Name"
+                description="Name"
+                dataType="trait" displayType="summary"/>
+
+        <metric displayName="QuorumAddress" property="QuorumAddress"
+                description="QuorumAddress"
+                dataType="trait" displayType="summary"/>
+
+        <metric displayName="State" property="State"
+                description="State"
+                dataType="trait" displayType="summary"/>
+
+        <metric displayName="TickTime" property="TickTime"
+                description="TickTime"
+                dataType="trait" displayType="summary"/>
+
+    </service>
 
 </plugin>
